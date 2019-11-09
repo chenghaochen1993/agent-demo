@@ -21,13 +21,10 @@ public class MyAgentmain {
         Class temp =null;
         for(Class clazz : inst.getAllLoadedClasses()) {
             if(clazz.getName().equals(args[0])) {
-                // 绑定ClassFileTransformer
                 myTransformer = new MyTransformer(args[0], args[1]);
                 inst.addTransformer(myTransformer, true);
-                // 对已加载类重新转换处理
                 temp =clazz;
                 inst.retransformClasses(clazz);
-
             }
         }
         inst.removeTransformer(myTransformer);

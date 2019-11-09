@@ -38,7 +38,7 @@ public class MyTransformer implements ClassFileTransformer {
                     @Override
                     public MethodVisitor visitMethod(int access, String name, String descriptor, String signature, String[] exceptions) {
                         MethodVisitor methodVisitor = super.visitMethod(access, name, descriptor, signature, exceptions);
-                        if (name.equals("hello")) {
+                        if (name.equals(targetMethodName)) {
                             return new MethodModify(methodVisitor);
                         }
                         return methodVisitor;
